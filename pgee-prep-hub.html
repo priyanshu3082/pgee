@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IIIT-H PGEE CSE — Complete Prep Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;
+  --color-surface-offset:#f3f0ec;--color-divider:#dcd9d5;--color-border:#d4d1ca;
+  --color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;
+  --color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-highlight:#cedcd8;
+  --color-accent:#e8590c;--color-gold:#d19900;--color-success:#437a22;
+  --color-blue:#006494;--color-purple:#7a39bb;
+  --shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);
+  --shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);
+  --shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);
+  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;
+  --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+  --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+  --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+}
+[data-theme="dark"]{
+  --color-bg:#0f0e0d;--color-surface:#161514;--color-surface-2:#1c1b19;
+  --color-surface-offset:#1a1918;--color-divider:#262523;--color-border:#333230;
+  --color-text:#cdccca;--color-text-muted:#797876;--color-text-faint:#5a5957;
+  --color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-primary-highlight:#2a3a3b;
+  --color-accent:#f87c3b;--color-gold:#e8af34;--color-success:#6daa45;
+  --color-blue:#5591c7;--color-purple:#a86fdf;
+  --shadow-sm:0 1px 2px oklch(0 0 0/0.3);
+  --shadow-md:0 4px 12px oklch(0 0 0/0.4);
+  --shadow-lg:0 12px 32px oklch(0 0 0/0.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:4rem;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.65;transition:background .25s,color .25s}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--color-primary);text-decoration:none;transition:color .18s}
+a:hover{color:var(--color-primary-hover);text-decoration:underline}
+code,pre{font-family:var(--font-mono)}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:color-mix(in oklch,var(--color-bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-border);padding:.75rem var(--space-6)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.nav-logo{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;color:var(--color-text)}
+.nav-logo svg{color:var(--color-primary)}
+.nav-links{display:flex;gap:var(--space-6);list-style:none;align-items:center}
+.nav-links a{font-size:var(--text-sm);color:var(--color-text-muted);transition:color .18s}
+.nav-links a:hover{color:var(--color-primary);text-decoration:none}
+.theme-toggle{display:flex;align-items:center;padding:var(--space-2);border-radius:var(--radius-full);border:1px solid var(--color-border);transition:background .18s,border-color .18s}
+.theme-toggle:hover{background:var(--color-surface-offset)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* HERO */
+.hero{max-width:1200px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-10);display:grid;grid-template-columns:1fr auto;gap:var(--space-8);align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-accent) 15%,var(--color-surface));color:var(--color-accent);font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3em .8em;border-radius:var(--radius-full);border:1px solid color-mix(in oklch,var(--color-accent) 30%,transparent);margin-bottom:var(--space-4)}
+.hero h1{font-size:var(--text-2xl);font-weight:700;line-height:1.15;margin-bottom:var(--space-4);max-width:16ch}
+.hero h1 span{color:var(--color-primary)}
+.hero-desc{color:var(--color-text-muted);max-width:52ch;font-size:var(--text-base);margin-bottom:var(--space-6)}
+.hero-stats{display:flex;gap:var(--space-6);flex-wrap:wrap}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-size:var(--text-xl);font-weight:700;color:var(--color-primary);line-height:1}
+.stat-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:.25rem}
+.hero-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-md);min-width:240px}
+.hero-card-title{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted);margin-bottom:var(--space-4)}
+.exam-detail{display:flex;justify-content:space-between;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
+.exam-detail:last-child{border-bottom:none}
+.exam-detail-label{color:var(--color-text-muted)}
+.exam-detail-val{font-weight:600;color:var(--color-text);text-align:right}
+.alert-banner{max-width:1200px;margin:0 auto var(--space-8);padding:var(--space-3) var(--space-6);background:color-mix(in oklch,var(--color-accent) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-accent) 40%,transparent);border-radius:var(--radius-lg);color:var(--color-text);font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-3)}
+.alert-banner strong{color:var(--color-accent)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-card{display:none}}
+
+/* MAIN LAYOUT */
+.page-body{max-width:1200px;margin:0 auto;padding:0 var(--space-6) var(--space-16);display:grid;grid-template-columns:220px 1fr;gap:var(--space-10);align-items:start}
+@media(max-width:900px){.page-body{grid-template-columns:1fr}}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:4.5rem}
+.sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:2px}
+.sidebar-nav .section-header{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-faint);padding:.5rem var(--space-3) .25rem;margin-top:var(--space-4)}
+.sidebar-nav .section-header:first-child{margin-top:0}
+.sidebar-nav a{display:block;font-size:var(--text-sm);color:var(--color-text-muted);padding:.45rem var(--space-3);border-radius:var(--radius-md);transition:background .15s,color .15s;text-decoration:none}
+.sidebar-nav a:hover,.sidebar-nav a.active{background:var(--color-primary-highlight);color:var(--color-primary)}
+@media(max-width:900px){.sidebar{display:none}}
+
+/* SECTIONS */
+.content-area{min-width:0}
+.section{margin-bottom:var(--space-16)}
+.section-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-primary);margin-bottom:var(--space-2)}
+.section-title{font-size:var(--text-xl);font-weight:700;margin-bottom:var(--space-2);line-height:1.2}
+.section-desc{color:var(--color-text-muted);max-width:65ch;margin-bottom:var(--space-8);font-size:var(--text-base)}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:var(--space-4)}
+.card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.card-icon{width:36px;height:36px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--color-primary) 15%,var(--color-surface-offset));display:flex;align-items:center;justify-content:center;color:var(--color-primary);margin-bottom:var(--space-3);font-size:1.1rem}
+.card-title{font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-2)}
+.card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55}
+.card-tag{display:inline-block;font-size:var(--text-xs);padding:.2em .7em;border-radius:var(--radius-full);margin-top:var(--space-3);font-weight:500}
+.tag-easy{background:color-mix(in oklch,var(--color-success) 15%,transparent);color:var(--color-success)}
+.tag-medium{background:color-mix(in oklch,var(--color-gold) 15%,transparent);color:var(--color-gold)}
+.tag-hard{background:color-mix(in oklch,var(--color-accent) 15%,transparent);color:var(--color-accent)}
+.tag-core{background:color-mix(in oklch,var(--color-primary) 15%,transparent);color:var(--color-primary)}
+.tag-math{background:color-mix(in oklch,var(--color-purple) 15%,transparent);color:var(--color-purple)}
+.tag-aptitude{background:color-mix(in oklch,var(--color-blue) 15%,transparent);color:var(--color-blue)}
+
+/* SUBJECT TABLE */
+.subject-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--color-border);margin-bottom:var(--space-8)}
+table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+thead{background:var(--color-surface)}
+th{text-align:left;padding:var(--space-3) var(--space-4);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);border-bottom:1px solid var(--color-border)}
+td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);vertical-align:top;color:var(--color-text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-surface-offset)}
+.weight-pill{display:inline-flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;width:2rem;height:2rem;border-radius:var(--radius-full)}
+.w-high{background:color-mix(in oklch,var(--color-accent) 15%,transparent);color:var(--color-accent)}
+.w-med{background:color-mix(in oklch,var(--color-gold) 15%,transparent);color:var(--color-gold)}
+.w-low{background:color-mix(in oklch,var(--color-success) 15%,transparent);color:var(--color-success)}
+
+/* ACCORDION */
+.accordion-item{border:1px solid var(--color-border);border-radius:var(--radius-lg);margin-bottom:var(--space-3);overflow:hidden}
+.accordion-header{display:flex;justify-content:space-between;align-items:center;padding:var(--space-4) var(--space-5);background:var(--color-surface);cursor:pointer;gap:var(--space-4);transition:background .15s}
+.accordion-header:hover{background:var(--color-surface-offset)}
+.accordion-title{font-size:var(--text-base);font-weight:600}
+.accordion-meta{font-size:var(--text-xs);color:var(--color-text-muted)}
+.accordion-icon{font-size:1rem;color:var(--color-text-muted);transition:transform .25s;flex-shrink:0}
+.accordion-item.open .accordion-icon{transform:rotate(180deg)}
+.accordion-body{display:none;padding:var(--space-5);background:var(--color-surface-2);border-top:1px solid var(--color-divider)}
+.accordion-item.open .accordion-body{display:block}
+.accordion-body ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-2)}
+.accordion-body li{font-size:var(--text-sm);color:var(--color-text-muted);padding:var(--space-1) 0;display:flex;align-items:flex-start;gap:var(--space-2)}
+.accordion-body li::before{content:"→";color:var(--color-primary);flex-shrink:0;margin-top:.05em}
+.accordion-body .note{margin-top:var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted);background:var(--color-surface-offset);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border-left:3px solid var(--color-primary)}
+
+/* CODE BLOCK */
+.code-block{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:var(--space-6)}
+.code-block-header{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-4);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border)}
+.code-lang{font-size:var(--text-xs);color:var(--color-text-muted);font-weight:500}
+.code-content{padding:var(--space-4) var(--space-5);font-family:var(--font-mono);font-size:0.82rem;line-height:1.65;overflow-x:auto;color:var(--color-text)}
+.code-content .kw{color:var(--color-primary)}
+.code-content .fn{color:var(--color-gold)}
+.code-content .cm{color:var(--color-text-faint);font-style:italic}
+.code-content .str{color:var(--color-success)}
+.code-content .num{color:var(--color-accent)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:var(--space-8)}
+.timeline::before{content:"";position:absolute;left:var(--space-3);top:0;bottom:0;width:2px;background:var(--color-divider)}
+.timeline-item{position:relative;margin-bottom:var(--space-6)}
+.timeline-dot{position:absolute;left:calc(-1 * var(--space-8) + var(--space-3) - 6px);top:.3rem;width:12px;height:12px;border-radius:50%;background:var(--color-primary);border:2px solid var(--color-bg)}
+.timeline-item:last-child .timeline-dot{background:var(--color-accent)}
+.timeline-title{font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-1)}
+.timeline-desc{font-size:var(--text-sm);color:var(--color-text-muted)}
+
+/* PROGRESS BARS */
+.progress-list{display:flex;flex-direction:column;gap:var(--space-4)}
+.progress-item-label{display:flex;justify-content:space-between;font-size:var(--text-sm);margin-bottom:var(--space-1)}
+.progress-bar-bg{height:6px;background:var(--color-surface-offset);border-radius:var(--radius-full);overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:var(--radius-full);transition:width 1s ease}
+.fill-high{background:var(--color-accent)}
+.fill-med{background:var(--color-gold)}
+.fill-low{background:var(--color-primary)}
+
+/* LINKS LIST */
+.links-list{display:flex;flex-direction:column;gap:var(--space-3)}
+.link-item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);transition:background .15s,box-shadow .15s;text-decoration:none;color:var(--color-text)}
+.link-item:hover{background:var(--color-surface-offset);box-shadow:var(--shadow-sm);text-decoration:none}
+.link-icon{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--color-primary-highlight);display:flex;align-items:center;justify-content:center;color:var(--color-primary);font-size:.9rem;flex-shrink:0}
+.link-info{flex:1}
+.link-title{font-size:var(--text-sm);font-weight:600;display:block}
+.link-meta{font-size:var(--text-xs);color:var(--color-text-muted)}
+.link-arrow{color:var(--color-text-faint)}
+
+/* 2-COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+
+/* CHECKLIST */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:var(--space-3)}
+.checklist li{display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)}
+.check-box{width:20px;height:20px;border-radius:var(--radius-sm);border:2px solid var(--color-border);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;margin-top:.1em}
+.check-box.checked{background:var(--color-primary);border-color:var(--color-primary);color:#fff}
+
+/* TIPS */
+.tip-box{background:color-mix(in oklch,var(--color-primary) 10%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-primary) 30%,transparent);border-radius:var(--radius-lg);padding:var(--space-5);margin-bottom:var(--space-6)}
+.tip-box-header{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-3)}
+.tip-box ul{list-style:none;display:flex;flex-direction:column;gap:var(--space-2)}
+.tip-box li{font-size:var(--text-sm);color:var(--color-text-muted);display:flex;gap:var(--space-2)}
+.tip-box li::before{content:"✦";color:var(--color-primary);flex-shrink:0;font-size:.7rem;margin-top:.25em}
+
+/* FOOTER */
+footer{border-top:1px solid var(--color-divider);padding:var(--space-8) var(--space-6);text-align:center;font-size:var(--text-xs);color:var(--color-text-faint)}
+footer strong{color:var(--color-text-muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" style="text-decoration:none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      PGEE Prep Hub
+    </a>
+    <ul class="nav-links">
+      <li><a href="#syllabus">Syllabus</a></li>
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#pyq">PYQs</a></li>
+      <li><a href="#revision">Revision</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">🎯 IIIT Hyderabad · M.Tech CSE 2026–27</div>
+    <h1>Complete PGEE <span>Prep Guide</span></h1>
+    <p class="hero-desc">Syllabus, PYQs, topic-wise notes, quick revision sheets, exam strategy — everything you need to crack the PGEE Computer Science paper and secure admission to IIIT Hyderabad.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Core Subjects</span></div>
+      <div class="stat"><span class="stat-num">3h</span><span class="stat-label">Exam Duration</span></div>
+      <div class="stat"><span class="stat-num">25%</span><span class="stat-label">Negative Marking</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Papers</span></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">📋 Your Admit Card</div>
+    <div class="exam-detail"><span class="exam-detail-label">Candidate</span><span class="exam-detail-val">Priyanshu Nayan</span></div>
+    <div class="exam-detail"><span class="exam-detail-label">App No.</span><span class="exam-detail-val">PGM2618333</span></div>
+    <div class="exam-detail"><span class="exam-detail-label">Date</span><span class="exam-detail-val" style="color:var(--color-accent);font-weight:700">May 02, 2026</span></div>
+    <div class="exam-detail"><span class="exam-detail-label">Reporting</span><span class="exam-detail-val">12:30 PM</span></div>
+    <div class="exam-detail"><span class="exam-detail-label">Exam Time</span><span class="exam-detail-val">2:00 – 5:00 PM</span></div>
+    <div class="exam-detail"><span class="exam-detail-label">Centre</span><span class="exam-detail-val">TCS Gito Bitan, Salt Lake, Kolkata</span></div>
+  </div>
+</section>
+
+<div class="alert-banner">
+  <span style="font-size:1.2rem">⚠️</span>
+  <span><strong>Exam is TODAY — May 2, 2026!</strong> Arrive at TCS Gito Bitan by 12:30 PM. Entry closes at 1:30 PM. Bring Admit Card + Original ID proof. No electronic devices inside.</span>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <aside class="sidebar">
+    <ul class="sidebar-nav">
+      <li class="section-header">Overview</li>
+      <li><a href="#exam-pattern">Exam Pattern</a></li>
+      <li><a href="#syllabus">Full Syllabus</a></li>
+      <li class="section-header">Core Subjects</li>
+      <li><a href="#ds-algo">DS & Algorithms</a></li>
+      <li><a href="#os">Operating Systems</a></li>
+      <li><a href="#dbms">DBMS</a></li>
+      <li><a href="#networks">Computer Networks</a></li>
+      <li><a href="#digital">Digital Logic</a></li>
+      <li><a href="#discrete">Discrete Maths</a></li>
+      <li><a href="#cprog">C Programming</a></li>
+      <li><a href="#aptitude">General Aptitude</a></li>
+      <li class="section-header">Prep</li>
+      <li><a href="#pyq">PYQ Analysis</a></li>
+      <li><a href="#revision">Quick Revision</a></li>
+      <li><a href="#strategy">Exam Strategy</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+  </aside>
+
+  <main class="content-area">
+
+    <!-- EXAM PATTERN -->
+    <section class="section" id="exam-pattern">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">Exam Pattern</h2>
+      <p class="section-desc">PGEE is a Computer-Based Test (CBT) conducted in two papers on the same day. Both have negative marking of 25% for wrong answers.</p>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Paper</th><th>Duration</th><th>Type</th><th>Topics</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Paper I — General Aptitude</strong></td><td>90 min</td><td>Objective only</td><td>Logical reasoning, basic maths, computer fundamentals, verbal</td><td><span class="weight-pill w-med">~40%</span></td></tr>
+            <tr><td><strong>Paper II — CSE Subject</strong></td><td>90 min</td><td>Objective + Subjective</td><td>DS, Algorithms, OS, DBMS, Networks, Digital Logic, Discrete Maths, C</td><td><span class="weight-pill w-high">~60%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="two-col">
+        <div class="tip-box">
+          <div class="tip-box-header">✅ What's Allowed</div>
+          <ul>
+            <li>Admit card (printed, A4)</li>
+            <li>One original photo ID (Aadhaar/PAN/Passport/Voter ID/Driving License/College ID)</li>
+            <li>Simple ballpoint pen</li>
+            <li>Virtual scientific calculator on screen</li>
+          </ul>
+        </div>
+        <div class="tip-box" style="background:color-mix(in oklch,var(--color-accent) 8%,var(--color-surface));border-color:color-mix(in oklch,var(--color-accent) 25%,transparent)">
+          <div class="tip-box-header" style="color:var(--color-accent)">❌ Not Allowed</div>
+          <ul>
+            <li>Mobile phones, smartwatches, calculators</li>
+            <li>Books, notebooks, paper</li>
+            <li>Electronic devices of any kind</li>
+            <li>Photocopies or e-copies of ID</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYLLABUS -->
+    <section class="section" id="syllabus">
+      <div class="section-label">Official</div>
+      <h2 class="section-title">Complete CSE Syllabus</h2>
+      <p class="section-desc">Covers all topics from the official IIIT-H PGEE syllabus. Click each subject to expand detailed sub-topics.</p>
+
+      <div class="accordion-item open" id="acc-ds">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">📦 Data Structures & Algorithms</div><div class="accordion-meta">Highest weightage — ~25% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Arrays and multi-dimensional arrays</li><li>Linked Lists (singly, doubly, circular)</li><li>Stacks and Queues (array & linked)</li><li>Trees: Binary, BST, AVL, B-trees</li><li>Heaps and Priority Queues</li><li>Hashing: Collision resolution strategies</li><li>Graphs: Representation (adj matrix/list)</li><li>BFS, DFS, Dijkstra's, Bellman-Ford</li><li>Floyd-Warshall, Prim's, Kruskal's</li><li>Sorting: Merge, Quick, Heap, Counting, Radix</li><li>Searching: Binary search, interpolation</li><li>Recursion and backtracking</li><li>Dynamic Programming (LCS, LIS, Knapsack)</li><li>Greedy algorithms</li><li>Divide and conquer</li><li>Amortized analysis</li><li>Time & Space complexity (Big-O, Ω, Θ)</li><li>NP-Completeness basics</li>
+          </ul>
+          <div class="note">💡 <strong>Key Focus:</strong> Pointer-based DS in C, memory management questions, and DP problems are most frequently tested per past experiences. Trees + graphs dominate the paper.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-os">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">🖥️ Operating Systems</div><div class="accordion-meta">High weightage — ~18% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Process management, states, PCB</li><li>CPU scheduling algorithms (FCFS, SJF, RR, Priority)</li><li>Process synchronization: semaphores, mutexes</li><li>Deadlock: conditions, prevention, avoidance, detection</li><li>Banker's algorithm</li><li>Memory management: paging, segmentation</li><li>Virtual memory, page replacement (FIFO, LRU, Optimal)</li><li>Thrashing and working sets</li><li>File system: FAT, inode, directory structure</li><li>Disk scheduling (SSTF, SCAN, C-SCAN)</li><li>I/O management, device drivers</li><li>Inter-process communication (IPC)</li><li>Threads and multithreading</li><li>Critical section problem, Peterson's solution</li>
+          </ul>
+          <div class="note">💡 <strong>Key Focus:</strong> Numerical questions on page replacement algorithms (LRU page faults), Banker's algorithm, and scheduling Gantt charts appear regularly.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-dbms">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">🗄️ DBMS</div><div class="accordion-meta">High weightage — ~15% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Relational model: tuples, attributes, keys</li><li>SQL: SELECT, JOIN, GROUP BY, HAVING, subqueries</li><li>Functional dependencies (FD)</li><li>Normalization: 1NF, 2NF, 3NF, BCNF</li><li>Armstrong's axioms</li><li>Canonical cover, minimal FD sets</li><li>ER diagrams and relational mapping</li><li>Transactions: ACID properties</li><li>Concurrency control: 2PL, timestamp ordering</li><li>Serializability: conflict & view serializable</li><li>Deadlock in transactions</li><li>Query optimization, query plans</li><li>Indexing: B-tree, B+ tree, hash indexing</li><li>Relational algebra and calculus</li>
+          </ul>
+          <div class="note">💡 <strong>Key Focus:</strong> Normalization (BCNF decomposition), SQL queries with JOINs, and conflict/view serializability are very high-yield topics. FD closure and candidate keys are frequently tested.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-cn">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">🌐 Computer Networks</div><div class="accordion-meta">Medium-High weightage — ~15% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>OSI and TCP/IP models (all layers)</li><li>Physical layer: encoding, modulation, bandwidth</li><li>Data link layer: framing, error detection (CRC, checksum)</li><li>MAC protocols: CSMA/CD, CSMA/CA, ALOHA</li><li>Sliding window protocols (Go-Back-N, SR)</li><li>Network layer: IP addressing (IPv4, subnetting)</li><li>Routing algorithms: Dijkstra's, Bellman-Ford</li><li>RIP, OSPF, BGP overview</li><li>Transport layer: TCP (3-way handshake, flow control, congestion control)</li><li>UDP characteristics</li><li>Application layer: HTTP, DNS, DHCP, FTP, SMTP</li><li>Socket programming basics</li><li>Firewalls and NAT</li>
+          </ul>
+          <div class="note">💡 <strong>Key Focus:</strong> IP subnetting calculations, TCP congestion control phases, CRC computation, and sliding window protocol questions are common. Layer functions and protocols are frequently tested.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-dl">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">🔌 Digital Logic</div><div class="accordion-meta">Medium weightage — ~12% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Number systems: binary, octal, hex, BCD</li><li>Conversions and arithmetic in different bases</li><li>Boolean algebra: laws, theorems (De Morgan's)</li><li>Logic gates: AND, OR, NOT, NAND, NOR, XOR, XNOR</li><li>Truth tables and canonical forms (SOP, POS)</li><li>Karnaugh Maps (up to 4-variable)</li><li>Combinational circuits: MUX, DEMUX, encoder, decoder</li><li>Adders: half adder, full adder, ripple carry</li><li>Comparators and parity checkers</li><li>Sequential circuits: SR, JK, D, T flip-flops</li><li>Registers and counters (synchronous/asynchronous)</li><li>Finite State Machines (Mealy and Moore)</li><li>Computer organization: ALU, registers, buses</li><li>Memory units and cache organization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-dm">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">📐 Discrete Mathematics & Probability</div><div class="accordion-meta">Medium weightage — ~10% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Sets, relations, functions, bijections</li><li>Propositional logic: connectives, truth tables</li><li>Predicate logic: quantifiers, inference rules</li><li>Proof techniques: direct, contradiction, induction</li><li>Graph theory: paths, cycles, connectivity, planarity</li><li>Graph coloring, Eulerian/Hamiltonian paths</li><li>Trees: spanning trees, properties</li><li>Combinatorics: permutations, combinations</li><li>Pigeonhole principle, inclusion-exclusion</li><li>Recurrence relations and generating functions</li><li>Probability: Bayes' theorem, conditional probability</li><li>Random variables, expected value, variance</li><li>Distributions: Binomial, Poisson, Normal</li><li>Group theory basics (optional, low-yield)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-c">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">⚙️ C Programming</div><div class="accordion-meta">Medium weightage — ~10% of CSE paper</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Data types, variables, operators</li><li>Control flow: if-else, switch, loops</li><li>Functions: parameters, return types, recursion</li><li>Pointers: pointer arithmetic, pointer to pointer</li><li>Dynamic memory: malloc, calloc, realloc, free</li><li>Arrays and pointer equivalence</li><li>Strings and string functions</li><li>Structures, unions, typedef</li><li>File I/O: fopen, fread, fwrite</li><li>Preprocessor directives</li><li>Common tricky programs: output prediction</li><li>Stack frames and function call mechanics</li><li>Memory layout: stack vs heap vs BSS vs text</li>
+          </ul>
+          <div class="note">💡 <strong>Key Focus:</strong> Pointer arithmetic, pointer-based DS implementations in C, and "what is the output?" style questions. Candidates must be able to write correct C code during the exam.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-aptitude">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div><div class="accordion-title">🧠 General Aptitude (Paper I)</div><div class="accordion-meta">40% of total score — don't neglect!</div></div>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Number series and pattern recognition</li><li>Ratio, proportion, percentage</li><li>Time & work, speed & distance</li><li>Profit/loss, simple & compound interest</li><li>Logical reasoning: syllogisms, blood relations</li><li>Puzzles and seating arrangements</li><li>Data interpretation (tables, charts)</li><li>Verbal: reading comprehension, analogies</li><li>Basic programming logic (algorithm tracing)</li><li>Basic computer fundamentals (bits, bytes, units)</li><li>Set theory basics, Venn diagrams</li><li>Permutation & combination for aptitude</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC WEIGHTS -->
+    <section class="section" id="subjects">
+      <div class="section-label">Analysis</div>
+      <h2 class="section-title">Topic Weightage Guide</h2>
+      <p class="section-desc">Based on past PGEE papers and expert analysis — allocate study time proportionally.</p>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Subject</th><th>Weight</th><th>Key Topics to Focus</th><th>Difficulty</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Data Structures & Algorithms</strong></td><td><span class="weight-pill w-high">★★★</span></td><td>Trees, Graphs, DP, Sorting complexity</td><td><span class="card-tag tag-hard" style="margin:0">Hard</span></td></tr>
+            <tr><td><strong>Operating Systems</strong></td><td><span class="weight-pill w-high">★★★</span></td><td>Page replacement, Scheduling, Deadlock</td><td><span class="card-tag tag-medium" style="margin:0">Medium</span></td></tr>
+            <tr><td><strong>DBMS</strong></td><td><span class="weight-pill w-high">★★★</span></td><td>Normalization, SQL JOINs, Serializability</td><td><span class="card-tag tag-medium" style="margin:0">Medium</span></td></tr>
+            <tr><td><strong>Computer Networks</strong></td><td><span class="weight-pill w-med">★★☆</span></td><td>IP addressing, TCP, MAC protocols</td><td><span class="card-tag tag-medium" style="margin:0">Medium</span></td></tr>
+            <tr><td><strong>Digital Logic</strong></td><td><span class="weight-pill w-med">★★☆</span></td><td>K-Maps, Flip-flops, Circuits</td><td><span class="card-tag tag-easy" style="margin:0">Easy</span></td></tr>
+            <tr><td><strong>Discrete Maths</strong></td><td><span class="weight-pill w-med">★★☆</span></td><td>Graph theory, Probability, Combinatorics</td><td><span class="card-tag tag-medium" style="margin:0">Medium</span></td></tr>
+            <tr><td><strong>C Programming</strong></td><td><span class="weight-pill w-med">★★☆</span></td><td>Pointers, Memory management, Output prediction</td><td><span class="card-tag tag-medium" style="margin:0">Medium</span></td></tr>
+            <tr><td><strong>General Aptitude</strong></td><td><span class="weight-pill w-high">★★★</span></td><td>All (mandatory Paper I)</td><td><span class="card-tag tag-easy" style="margin:0">Easy–Med</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DSA NOTES -->
+    <section class="section" id="ds-algo">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">DS & Algorithms — Key Formulas</h2>
+      <p class="section-desc">Critical complexity table and algorithm summaries you must know cold.</p>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Algorithm / Structure</th><th>Time (Average)</th><th>Time (Worst)</th><th>Space</th></tr></thead>
+          <tbody>
+            <tr><td>Binary Search</td><td>O(log n)</td><td>O(log n)</td><td>O(1)</td></tr>
+            <tr><td>Merge Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td></tr>
+            <tr><td>Quick Sort</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td></tr>
+            <tr><td>Heap Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td></tr>
+            <tr><td>BST Search</td><td>O(log n)</td><td>O(n)</td><td>O(n)</td></tr>
+            <tr><td>AVL Tree operations</td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td></tr>
+            <tr><td>Hash Table Search</td><td>O(1)</td><td>O(n)</td><td>O(n)</td></tr>
+            <tr><td>BFS / DFS</td><td>O(V + E)</td><td>O(V + E)</td><td>O(V)</td></tr>
+            <tr><td>Dijkstra's (min-heap)</td><td>O((V+E) log V)</td><td>O((V+E) log V)</td><td>O(V)</td></tr>
+            <tr><td>Floyd-Warshall</td><td>O(V³)</td><td>O(V³)</td><td>O(V²)</td></tr>
+            <tr><td>Prim's (binary heap)</td><td>O(E log V)</td><td>O(E log V)</td><td>O(V)</td></tr>
+            <tr><td>Kruskal's</td><td>O(E log E)</td><td>O(E log E)</td><td>O(V)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="code-block">
+        <div class="code-block-header"><span class="code-lang">C — Classic Pointer-based Linked List (exam favorite)</span></div>
+        <div class="code-content"><pre><span class="cm">// PGEE often tests pointer-based DS in C</span>
+<span class="kw">struct</span> Node {
+    <span class="kw">int</span> data;
+    <span class="kw">struct</span> Node* next;
+};
+
+<span class="cm">// Insert at head — O(1)</span>
+<span class="kw">struct</span> Node* <span class="fn">insertHead</span>(<span class="kw">struct</span> Node* head, <span class="kw">int</span> val) {
+    <span class="kw">struct</span> Node* node = (<span class="kw">struct</span> Node*) <span class="fn">malloc</span>(<span class="kw">sizeof</span>(<span class="kw">struct</span> Node));
+    node->data = val;
+    node->next = head;
+    <span class="kw">return</span> node;
+}
+
+<span class="cm">// Reverse a linked list — classic PGEE question!</span>
+<span class="kw">struct</span> Node* <span class="fn">reverse</span>(<span class="kw">struct</span> Node* head) {
+    <span class="kw">struct</span> Node *prev = NULL, *curr = head, *next;
+    <span class="kw">while</span> (curr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    <span class="kw">return</span> prev;
+}</pre></div>
+      </div>
+    </section>
+
+    <!-- OS NOTES -->
+    <section class="section" id="os">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">Operating Systems — Core Concepts</h2>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Algorithm</th><th>How it works</th><th>Drawback</th></tr></thead>
+          <tbody>
+            <tr><td><strong>FIFO</strong> (Page Replacement)</td><td>Replace the oldest loaded page</td><td>Belady's anomaly</td></tr>
+            <tr><td><strong>LRU</strong></td><td>Replace least recently used page</td><td>High overhead; no Belady's anomaly</td></tr>
+            <tr><td><strong>Optimal</strong></td><td>Replace page not used for longest future time</td><td>Impossible in practice (needs future knowledge)</td></tr>
+            <tr><td><strong>FCFS</strong> (Scheduling)</td><td>Process in arrival order</td><td>Convoy effect</td></tr>
+            <tr><td><strong>SJF</strong></td><td>Shortest burst time first</td><td>Starvation; needs future burst time</td></tr>
+            <tr><td><strong>Round Robin</strong></td><td>Time quantum per process in rotation</td><td>High context switching; quantum choice critical</td></tr>
+            <tr><td><strong>Priority</strong></td><td>Highest priority runs first</td><td>Starvation of low-priority (fix: aging)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-box-header">🔑 Deadlock — Must Know</div>
+        <ul>
+          <li><strong>4 Conditions (all required simultaneously):</strong> Mutual exclusion, Hold &amp; wait, No preemption, Circular wait</li>
+          <li><strong>Prevention:</strong> Negate any one condition</li>
+          <li><strong>Avoidance:</strong> Banker's algorithm — check safe state before granting</li>
+          <li><strong>Detection:</strong> Resource allocation graph (RAG), cycle = deadlock for single instances</li>
+          <li><strong>Recovery:</strong> Kill process, preempt resources, rollback</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DBMS NOTES -->
+    <section class="section" id="dbms">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">DBMS — Normalization Cheatsheet</h2>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Normal Form</th><th>Requirement</th><th>Violation Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1NF</strong></td><td>All attributes are atomic (no repeating groups)</td><td>Phone = {91-xxx, 92-yyy}</td></tr>
+            <tr><td><strong>2NF</strong></td><td>1NF + No partial dependency (non-key depends on full PK)</td><td>Composite PK {A,B} → C depends only on A</td></tr>
+            <tr><td><strong>3NF</strong></td><td>2NF + No transitive dependency (non-key → non-key)</td><td>A→B, B→C where B is non-key</td></tr>
+            <tr><td><strong>BCNF</strong></td><td>For every FD X→Y, X must be a superkey</td><td>X→Y where X is not a superkey</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="code-block">
+        <div class="code-block-header"><span class="code-lang">SQL — Exam-style Query Examples</span></div>
+        <div class="code-content"><pre><span class="cm">-- Find 2nd highest salary (common exam pattern)</span>
+<span class="kw">SELECT</span> MAX(salary) <span class="kw">FROM</span> Employee
+<span class="kw">WHERE</span> salary &lt; (<span class="kw">SELECT</span> MAX(salary) <span class="kw">FROM</span> Employee);
+
+<span class="cm">-- Count employees per department, filter &gt;5</span>
+<span class="kw">SELECT</span> dept_id, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> emp_count
+<span class="kw">FROM</span> Employee
+<span class="kw">GROUP BY</span> dept_id
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="num">5</span>;
+
+<span class="cm">-- Employees who share manager with 'Alice'</span>
+<span class="kw">SELECT</span> e.name <span class="kw">FROM</span> Employee e
+<span class="kw">WHERE</span> e.manager_id = (
+    <span class="kw">SELECT</span> manager_id <span class="kw">FROM</span> Employee
+    <span class="kw">WHERE</span> name = <span class="str">'Alice'</span>
+) <span class="kw">AND</span> e.name != <span class="str">'Alice'</span>;</pre></div>
+      </div>
+    </section>
+
+    <!-- NETWORKS NOTES -->
+    <section class="section" id="networks">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">Computer Networks — Quick Reference</h2>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>OSI Layer</th><th>Function</th><th>Protocols/Devices</th></tr></thead>
+          <tbody>
+            <tr><td><strong>7 — Application</strong></td><td>User interface, data representation</td><td>HTTP, FTP, DNS, SMTP, DHCP</td></tr>
+            <tr><td><strong>6 — Presentation</strong></td><td>Encryption, compression, translation</td><td>SSL/TLS, JPEG, ASCII</td></tr>
+            <tr><td><strong>5 — Session</strong></td><td>Session establishment/management</td><td>NetBIOS, RPC</td></tr>
+            <tr><td><strong>4 — Transport</strong></td><td>End-to-end delivery, flow/congestion control</td><td>TCP, UDP</td></tr>
+            <tr><td><strong>3 — Network</strong></td><td>Routing, logical addressing</td><td>IP, ICMP, Router</td></tr>
+            <tr><td><strong>2 — Data Link</strong></td><td>Framing, error detection, MAC</td><td>Ethernet, Switch, Bridge</td></tr>
+            <tr><td><strong>1 — Physical</strong></td><td>Bit transmission, signals</td><td>Hub, repeater, cables</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-box-header">📡 TCP Congestion Control — Phases</div>
+        <ul>
+          <li><strong>Slow Start:</strong> cwnd doubles each RTT (exponential) until ssthresh</li>
+          <li><strong>Congestion Avoidance:</strong> cwnd increases by 1 per RTT (linear) after ssthresh</li>
+          <li><strong>Fast Retransmit:</strong> 3 duplicate ACKs → immediate retransmit (no timeout wait)</li>
+          <li><strong>Fast Recovery:</strong> ssthresh = cwnd/2; cwnd = ssthresh (skip slow start)</li>
+          <li><strong>On timeout:</strong> ssthresh = cwnd/2; cwnd = 1; back to slow start</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIGITAL LOGIC -->
+    <section class="section" id="digital">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">Digital Logic — K-Map & Flip-Flops</h2>
+      <div class="tip-box">
+        <div class="tip-box-header">🗺️ K-Map Simplification Rules</div>
+        <ul>
+          <li>Group cells with 1s in powers of 2 (1, 2, 4, 8, 16...)</li>
+          <li>Groups must be rectangular; wrapping around edges is allowed</li>
+          <li>Larger groups = simpler expression; always aim for largest possible group</li>
+          <li>Each variable eliminated per doubling group size</li>
+          <li>For SOP: group 1s; For POS: group 0s (max-terms)</li>
+        </ul>
+      </div>
+      <div class="subject-table-wrap">
+        <table>
+          <thead><tr><th>Flip-Flop</th><th>Inputs</th><th>Operation</th><th>Characteristic Equation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SR</strong></td><td>S, R</td><td>Set/Reset (S=R=1 invalid)</td><td>Q(t+1) = S + R'Q</td></tr>
+            <tr><td><strong>JK</strong></td><td>J, K</td><td>Set/Reset/Toggle (J=K=1 → toggle)</td><td>Q(t+1) = JQ' + K'Q</td></tr>
+            <tr><td><strong>D</strong></td><td>D</td><td>Data/Delay (Q follows D)</td><td>Q(t+1) = D</td></tr>
+            <tr><td><strong>T</strong></td><td>T</td><td>Toggle (T=1 → toggle; T=0 → hold)</td><td>Q(t+1) = T ⊕ Q</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DISCRETE MATHS -->
+    <section class="section" id="discrete">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">Discrete Maths — Formula Sheet</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🧮</div>
+          <div class="card-title">Counting Formulas</div>
+          <div class="card-desc">
+            <strong>nPr</strong> = n! / (n−r)! &nbsp;|&nbsp; <strong>nCr</strong> = n! / r!(n−r)!<br><br>
+            <strong>Derangement D(n)</strong> = n! × Σ (−1)ᵏ/k! from k=0 to n<br><br>
+            <strong>Inclusion-Exclusion</strong>: |A∪B∪C| = |A|+|B|+|C| − |A∩B| − |B∩C| − |A∩C| + |A∩B∩C|
+          </div>
+          <span class="card-tag tag-math">Discrete Maths</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Probability</div>
+          <div class="card-desc">
+            <strong>Bayes':</strong> P(A|B) = P(B|A)P(A) / P(B)<br><br>
+            <strong>Expected Value:</strong> E[X] = Σ xᵢ × P(xᵢ)<br><br>
+            <strong>Variance:</strong> Var(X) = E[X²] − (E[X])²<br><br>
+            <strong>Binomial:</strong> P(X=k) = C(n,k) × pᵏ × (1−p)^(n−k)
+          </div>
+          <span class="card-tag tag-math">Probability</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <div class="card-title">Graph Theory</div>
+          <div class="card-desc">
+            <strong>Handshaking Lemma:</strong> Σ deg(v) = 2|E|<br><br>
+            <strong>Euler path:</strong> Exactly 0 or 2 odd-degree vertices<br><br>
+            <strong>Euler circuit:</strong> All vertices have even degree<br><br>
+            <strong>Trees:</strong> |E| = |V| − 1; connected, acyclic
+          </div>
+          <span class="card-tag tag-math">Graph Theory</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">⊕</div>
+          <div class="card-title">Logic Laws</div>
+          <div class="card-desc">
+            <strong>De Morgan's:</strong> ¬(A∧B) = ¬A∨¬B; ¬(A∨B) = ¬A∧¬B<br><br>
+            <strong>Contrapositive:</strong> P→Q ≡ ¬Q→¬P<br><br>
+            <strong>Modus Ponens:</strong> P, P→Q ⊢ Q<br><br>
+            <strong>Resolution:</strong> (A∨B), (¬B∨C) ⊢ A∨C
+          </div>
+          <span class="card-tag tag-math">Logic</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- C PROGRAMMING -->
+    <section class="section" id="cprog">
+      <div class="section-label">In-Depth Notes</div>
+      <h2 class="section-title">C Programming — Pointer Traps</h2>
+      <div class="code-block">
+        <div class="code-block-header"><span class="code-lang">C — Common Tricky Questions in PGEE</span></div>
+        <div class="code-content"><pre><span class="cm">// Q: What does this print? (Pointer arithmetic)</span>
+<span class="kw">int</span> arr[] = {<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>};
+<span class="kw">int</span> *p = arr;
+<span class="fn">printf</span>(<span class="str">"%d %d %d
+"</span>, *p, *(p+<span class="num">2</span>), *(p++));
+<span class="cm">// Output: 10 30 10  (p++ returns current p, then increments)</span>
+
+<span class="cm">// Q: Sizeof trap</span>
+<span class="kw">int</span> a[<span class="num">5</span>] = {<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>};
+<span class="fn">printf</span>(<span class="str">"%zu
+"</span>, <span class="kw">sizeof</span>(a));     <span class="cm">// 20 (5 * 4 bytes)</span>
+<span class="fn">printf</span>(<span class="str">"%zu
+"</span>, <span class="kw">sizeof</span>(a[<span class="num">0</span>])); <span class="cm">// 4</span>
+
+<span class="cm">// Q: malloc vs calloc</span>
+<span class="kw">int</span> *x = (<span class="kw">int</span>*)<span class="fn">malloc</span>(<span class="num">5</span> * <span class="kw">sizeof</span>(<span class="kw">int</span>));  <span class="cm">// uninitialized</span>
+<span class="kw">int</span> *y = (<span class="kw">int</span>*)<span class="fn">calloc</span>(<span class="num">5</span>, <span class="kw">sizeof</span>(<span class="kw">int</span>));  <span class="cm">// zero-initialized</span>
+
+<span class="cm">// Memory layout (stack vs heap)</span>
+<span class="kw">int</span> local;          <span class="cm">// Stack (auto-freed on function return)</span>
+<span class="kw">static int</span> global;  <span class="cm">// BSS/data segment</span>
+<span class="kw">int</span> *heap = <span class="fn">malloc</span>(...); <span class="cm">// Heap (must free() manually!)</span></pre></div>
+      </div>
+    </section>
+
+    <!-- PYQ SECTION -->
+    <section class="section" id="pyq">
+      <div class="section-label">Previous Year Questions</div>
+      <h2 class="section-title">PYQ Analysis & Sources</h2>
+      <p class="section-desc">IIIT-H does not officially release all PYQs, but several community-collected and reconstructed papers are available. Focus on pattern recognition.</p>
+      <div class="links-list">
+        <a href="https://gate.appliedroots.com/pgeecspapers" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-icon">📄</div>
+          <div class="link-info"><span class="link-title">Applied Roots — PGEE CSE PYQs</span><span class="link-meta">Reconstructed PGEE 2019 CSE paper with both aptitude and subject sections</span></div>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="https://exams.freshersnow.com/iiith-pgee-previous-question-papers/" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-icon">📥</div>
+          <div class="link-info"><span class="link-title">FreshersNow — PYQ PDFs Download</span><span class="link-meta">Multiple year papers for CSE and Mathematics — PDF downloads available</span></div>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="https://collegedunia.com/exams/iiith-pgee/practice-papers" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-icon">📝</div>
+          <div class="link-info"><span class="link-title">CollegeDunia — Sample & Practice Papers</span><span class="link-meta">Sample papers and previous year question analysis for PGEE</span></div>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="https://www.geeksforgeeks.org/interview-experiences/iiith-pgee-exam-and-interview-experience-msr/" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-icon">💬</div>
+          <div class="link-info"><span class="link-title">GeeksForGeeks — PGEE Experience (2025)</span><span class="link-meta">Firsthand exam experience with topic breakdown — DS, OS, DBMS emphasis confirmed</span></div>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="https://pgadmissions.iiit.ac.in/monsoon_syllabus/" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-icon">🏫</div>
+          <div class="link-info"><span class="link-title">Official IIIT-H Syllabus Page</span><span class="link-meta">The authoritative source — always cross-check this before the exam</span></div>
+          <span class="link-arrow">→</span>
+        </a>
+      </div>
+
+      <h3 style="margin:var(--space-8) 0 var(--space-4);font-size:var(--text-lg)">Frequently Appearing Question Patterns</h3>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">🌳 Tree Traversal Output</div>
+          <div class="card-desc">Given a BST, find inorder/preorder/postorder output. Or: given two traversals, reconstruct the tree.</div>
+          <span class="card-tag tag-hard">Very Common</span>
+        </div>
+        <div class="card">
+          <div class="card-title">📄 Page Fault Calculation</div>
+          <div class="card-desc">Given a reference string and n frames, calculate page faults using FIFO, LRU, and Optimal algorithms.</div>
+          <span class="card-tag tag-hard">Very Common</span>
+        </div>
+        <div class="card">
+          <div class="card-title">🗄️ BCNF Decomposition</div>
+          <div class="card-desc">Find candidate keys, check if schema is in BCNF, decompose if not. Determine if decomposition is lossless.</div>
+          <span class="card-tag tag-hard">Very Common</span>
+        </div>
+        <div class="card">
+          <div class="card-title">⚙️ C Pointer Output</div>
+          <div class="card-desc">"What is the output of this C code?" involving pointer arithmetic, arrays, or recursive functions.</div>
+          <span class="card-tag tag-medium">Common</span>
+        </div>
+        <div class="card">
+          <div class="card-title">📡 Subnet Calculation</div>
+          <div class="card-desc">Given IP address and subnet mask, find network address, broadcast address, and valid host range.</div>
+          <span class="card-tag tag-medium">Common</span>
+        </div>
+        <div class="card">
+          <div class="card-title">🔌 K-Map Simplification</div>
+          <div class="card-desc">Minimize a Boolean function using Karnaugh map (3 or 4 variables). Often paired with circuit design.</div>
+          <span class="card-tag tag-easy">Common</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVISION -->
+    <section class="section" id="revision">
+      <div class="section-label">Quick Revision</div>
+      <h2 class="section-title">Last-Minute Revision Sheet</h2>
+      <p class="section-desc">Critical facts, formulas, and mnemonics to review in the final hours before the exam.</p>
+
+      <div class="tip-box">
+        <div class="tip-box-header">⚡ Must-Memorize Facts</div>
+        <ul>
+          <li><strong>AVL tree rotations:</strong> LL → Right rotation; RR → Left rotation; LR → Left then Right; RL → Right then Left</li>
+          <li><strong>Heap insert/delete:</strong> Both O(log n). Build heap: O(n), not O(n log n)!</li>
+          <li><strong>Deadlock 4 conditions:</strong> Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait</li>
+          <li><strong>ACID properties:</strong> Atomicity, Consistency, Isolation, Durability</li>
+          <li><strong>TCP 3-way handshake:</strong> SYN → SYN-ACK → ACK</li>
+          <li><strong>IPv4:</strong> 32-bit; IPv6: 128-bit. Subnet mask /24 = 256 addresses, 254 usable hosts</li>
+          <li><strong>Process vs Thread:</strong> Threads share code/data/heap but have own stack/registers</li>
+          <li><strong>Semaphore vs Mutex:</strong> Mutex is binary semaphore with ownership; semaphore allows counting</li>
+          <li><strong>B-tree order m:</strong> Every node has at most m children; at least ⌈m/2⌉ children (except root)</li>
+          <li><strong>NP-complete examples:</strong> SAT, 3-SAT, Traveling Salesman, Vertex Cover, Clique, Knapsack (decision)</li>
+        </ul>
+      </div>
+
+      <h3 style="margin:var(--space-6) 0 var(--space-4);font-size:var(--text-lg)">📋 Pre-Exam Checklist</h3>
+      <ul class="checklist" id="checklist">
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Admit card printed on A4, 100% size — DO NOT sign it yet</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Original photo ID ready (Aadhaar / College ID / PAN)</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Simple ballpoint pen in bag</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Mobile phone left at home (strictly NOT allowed inside)</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>TCS Gito Bitan address confirmed — Sector V, Salt Lake, Kolkata 700091</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Arrive by 12:30 PM — entry CLOSES at 1:30 PM</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Sign admit card only in presence of invigilator at exam center</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Write Admit Card Number (707525) on any rough sheets provided</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Reviewed complexity table for sorting/graph algorithms</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Reviewed BCNF, LRU, TCP congestion control last night</span></li>
+      </ul>
+    </section>
+
+    <!-- STRATEGY -->
+    <section class="section" id="strategy">
+      <div class="section-label">Exam Day</div>
+      <h2 class="section-title">Exam Strategy</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Paper I: General Aptitude (2:00 – 3:30 PM)</div>
+          <div class="timeline-desc">Start with questions you're confident about. Skip and come back to tricky ones. Don't spend more than 2 min per question. With 25% negative marking, only attempt if ≥60% confident. Target: attempt 70–80% of questions.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Paper II: CSE Subject (3:30 – 5:00 PM)</div>
+          <div class="timeline-desc">Start with your strongest subjects (DS/Algorithms or OS). For subjective questions, show all steps — partial credit may be awarded. Manage time: 10–12 min per subjective question.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Time Allocation in Paper II</div>
+          <div class="timeline-desc">DS & Algorithms: 25 min | OS: 18 min | DBMS: 18 min | Networks: 12 min | Digital Logic: 10 min | C Programming: 10 min | Discrete Maths: 10 min | Review: 7 min</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">The 25% Negative Marking Rule</div>
+          <div class="timeline-desc">Only guess if you can eliminate at least 2 options out of 4. If you're completely unsure, leave it blank. Attempted wrong = −0.25 marks; blank = 0. A wrong guess hurts more than a skip.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="section" id="resources">
+      <div class="section-label">References</div>
+      <h2 class="section-title">Best Study Resources</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🟢</div>
+          <div class="card-title">GeeksForGeeks</div>
+          <div class="card-desc">Best resource for DS, Algorithms, OS, DBMS theory with examples. Use the GATE CS section for structured topic coverage aligned to PGEE.</div>
+          <a href="https://geeksforgeeks.org/gate-cs-notes-gq/" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--color-primary);margin-top:var(--space-3);display:block">geeksforgeeks.org/gate-cs →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔴</div>
+          <div class="card-title">NPTEL CS Courses</div>
+          <div class="card-desc">IIT faculty lectures on DS, Algorithms, OS, DBMS, Networks. Free video lectures with slides. Excellent for conceptual clarity on complex topics.</div>
+          <a href="https://nptel.ac.in/courses/106/106/106106127/" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--color-primary);margin-top:var(--space-3);display:block">nptel.ac.in →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">📺</div>
+          <div class="card-title">GO Classes (PGEE 2026)</div>
+          <div class="card-desc">Dedicated PGEE 2026 course with test series. Covers aptitude + CSE subjects with PGEE-specific focus. Test series helps identify weak areas.</div>
+          <a href="https://www.goclasses.in/courses/IIITH-PGEE-Course-67ad9972aadc302b01ac625f" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--color-primary);margin-top:var(--space-3);display:block">goclasses.in →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <div class="card-title">CLRS (Algorithms)</div>
+          <div class="card-desc">Introduction to Algorithms by Cormen, Leiserson, Rivest, Stein. The gold standard for algorithms. Focus on Parts I–V for PGEE coverage.</div>
+          <span class="card-tag tag-hard">Advanced</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <div class="card-title">LeetCode — PGEE Patterns</div>
+          <div class="card-desc">Practice Easy–Medium problems on Trees, Graphs, DP, Linked Lists. Your existing C++ practice on LeetCode directly transfers to PGEE CSE paper.</div>
+          <a href="https://leetcode.com/problemset/?topicSlugs=tree,graph,dynamic-programming&difficulty=EASY,MEDIUM" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--color-primary);margin-top:var(--space-3);display:block">leetcode.com →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">ACE Engineering Academy</div>
+          <div class="card-desc">Published a 60-day PGEE 2026 preparation strategy guide. Useful for understanding topic priority and study schedule structuring.</div>
+          <a href="https://blog.aceenggacademy.com/60-day-preparation-strategy-for-pgee-2026/" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--color-primary);margin-top:var(--space-3);display:block">aceenggacademy.com →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <strong>IIIT-H PGEE CSE Prep Hub</strong> — Built for Priyanshu Nayan · Admit Card #707525 · Exam: May 02, 2026 · All the best! 🎓<br>
+  <span style="margin-top:var(--space-2);display:block">Resources compiled from official IIIT-H syllabus, PYQ collections, and verified exam experiences. Always cross-check with pgadmissions.iiit.ac.in</span>
+</footer>
+
+<script>
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  if(t) t.addEventListener('click',()=>{
+    d=d==='dark'?'light':'dark';
+    r.setAttribute('data-theme',d);
+    t.innerHTML=d==='dark'?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  });
+})();
+
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+function toggleCheck(box) {
+  box.classList.toggle('checked');
+  box.innerHTML = box.classList.contains('checked') ? '✓' : '';
+}
+
+// Sidebar active link on scroll
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+function setActive() {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}
+window.addEventListener('scroll', setActive, {passive:true});
+</script>
+</body>
+</html>
